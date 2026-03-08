@@ -21,7 +21,7 @@
   "functions": {
     "api/*.js": {
       "regions": [
-        "bom11"
+        "bom1"
       ]
     }
   }
