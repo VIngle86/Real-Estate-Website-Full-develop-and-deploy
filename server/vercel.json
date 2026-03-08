@@ -17,5 +17,12 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ]
+  ],
+  "functions": {
+    "api/*.js": {
+      "regions": [
+        "bom1"
+      ]
+    }
+  }
 }
