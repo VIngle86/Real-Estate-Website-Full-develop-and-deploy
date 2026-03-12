@@ -11,7 +11,7 @@ const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
-  const { navigate, user } = useAppContext();
+  const { navigate, user, isOwner, setShowAgencyReg } = useAppContext();
   const { openSignIn } = useClerk();
 
   const BookingIcon = () => (
@@ -69,6 +69,14 @@ const Header = () => {
           />
           {/*Buttons SearchBar & Profile*/}
           <div className='flex sm:flex-1 items-center sm:justify-end gap-x-4 sm:gap-x-8'>
+            <div>
+              {user && (
+                <button onClick={() => isOwner ? navigate('/owner') : setShowAgencyReg(true)} className={`btn-outline px-2 py-1 text-xs font-semibold ${!active && 'text-primary ring-primary bg-transparent hover:text-black'} bg-secondary/10 hover:bg-white`}>
+                  {isOwner ? "Dashboard" : "Register Agency"}
+                </button>
+              )}
+            </div>
+
 
             {/*SearchBar*/}
             <div className="relative hidden xl:flex items-center">
@@ -100,8 +108,8 @@ const Header = () => {
                     }
                   }}>
                     <UserButton.MenuItems>
-                      <UserButton.Action Label="My Bookings" LabelIcon={<BookingIcon />}
-                        onClick={() => navigate}
+                      <UserButton.Action label="My Bookings" labelIcon={<BookingIcon />}
+                        onClick={() => navigate('/my-bookings')}
                       />
                     </UserButton.MenuItems>
                   </UserButton>

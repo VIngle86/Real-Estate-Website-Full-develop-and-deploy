@@ -5,6 +5,9 @@ import connectDB from './config/mongodb.js'
 import { clerkMiddleware } from '@clerk/express'
 import clerkWebhooks from './controllers/clerkWebhooks.js'
 import userRouter from './routes/userRoute.js'
+import agencyRouter from './routes/agencyRoute.js'
+import propertyRouter from './routes/propertyRoute.js'
+import bookingRouter from './routes/bookingRoute.js'
 
 
 await connectDB() //establish connection to the databasee
@@ -22,6 +25,9 @@ app.use('/api/clerk', clerkWebhooks)
 
 //Define API routes
 app.use('/api/user', userRouter)
+app.use('/api/agencies', agencyRouter)
+app.use('/api/properties', propertyRouter)
+app.use('/api/bookings', bookingRouter)
 
 //route endpoint to check API status
 app.get('/', (req, res) => {

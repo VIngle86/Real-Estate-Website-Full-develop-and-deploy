@@ -14,7 +14,7 @@ import AddProperty from './Pages/Owner/AddProperty'
 import Sidebar from './Components/Owner/Sidebar'
 import Dashboard from './Pages/Owner/Dashboard'
 import ListProperty from './Pages/Owner/ListProperty'
-
+import { Toaster } from 'react-hot-toast'
 
 const App = () => {
   const location = useLocation()
@@ -25,6 +25,7 @@ const App = () => {
     <main>
       {!isOwnerPath && <Header />}
       {showAgencyReg && <AgencyReg />}
+      <Toaster position='bottom-right' />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/listing" element={<Listing />} />
